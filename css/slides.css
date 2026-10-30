@@ -2059,32 +2059,43 @@
 /* =========================================================================
    SLIDE 05 — 25 BRANDS
    ========================================================================= */
+/* =========================================================================
+   SLIDE 05 — 25 BRANDS (کانتینر ۵ ستونه + چیدمان ۲ ردیفه داخل کارت)
+   ========================================================================= */
 
+/* ۱. کانتینر اصلی: حفظ چیدمان ۵ ستونه در صفحه */
 .s5-brands-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
-  align-items: stretch;
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr) !important;
+  gap: 14px 12px !important;
+  width: 100% !important;
+  align-items: stretch !important;
 }
 
+/* ۲. تک‌تک کارت‌ها: گرید داخلی (لوگو در ستون اول، متون در ستون دوم زیر هم) */
 .s5-brand-tile {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border-glass);
   border-radius: 16px;
   padding: 12px 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  align-self: start;
-  transform-origin: top center;
+  min-height: 74px;
+  box-sizing: border-box;
+
+  /* شبکه داخلی ۲ سطری */
+  display: grid !important;
+  grid-template-columns: auto 1fr !important;
+  grid-template-rows: auto auto !important;
+  column-gap: 12px !important;
+  row-gap: 4px !important;
+  align-items: center !important;
+
   transition:
     border-color 0.25s ease,
     background 0.25s ease,
     box-shadow 0.25s ease;
-  min-height: 68px;
 }
 
 .s5-brand-tile::before {
@@ -2109,35 +2120,57 @@
   width: 6px;
 }
 
+/* باکس لوگو: ستون اول و کشیده شده در هر دو سطر */
 .s5-brand-tile .brand-logo-slot {
-  width: 44px;
-  height: 44px;
-  border-radius: 12px;
-  padding: 5px;
-  margin-left: 0;
-  flex-shrink: 0;
+  grid-column: 1 !important;
+  grid-row: 1 / span 2 !important;
+  width: 46px !important;
+  height: 46px !important;
+  border-radius: 12px !important;
+  padding: 5px !important;
+  margin: 0 !important;
+  background: #ffffff !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  flex-shrink: 0 !important;
 }
 
+.s5-brand-tile .brand-logo-slot img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* تایتل: ردیف اول با فونت بزرگ‌تر و ضخیم */
 .s5-brand-tile .brand-tile-name {
-  font-size: clamp(13px, 1vw, 15px);
-  font-weight: 900;
-  color: #ffffff;
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 1.3;
+  grid-column: 2 !important;
+  grid-row: 1 !important;
+  font-size: 15.5px !important;
+  font-weight: 900 !important;
+  color: #ffffff !important;
+  line-height: 1.35 !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  margin: 0 !important;
 }
 
+/* بج دسته‌بندی: ردیف دوم دقیقاً زیر تایتل */
 .s5-brand-tile .brand-tile-cat {
-  font-size: clamp(10px, 0.75vw, 11px);
-  color: var(--text-muted);
-  background: rgba(255, 255, 255, 0.06);
-  padding: 3px 8px;
-  border-radius: 8px;
-  font-weight: 700;
-  white-space: nowrap;
-  flex-shrink: 0;
+  grid-column: 2 !important;
+  grid-row: 2 !important;
+  justify-self: start !important;
+  font-size: 12px !important;
+  font-weight: 800 !important;
+  color: var(--text-muted) !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+  padding: 2px 10px !important;
+  border-radius: 999px !important;
+  white-space: nowrap !important;
+  line-height: 1.4 !important;
+  margin: 0 !important;
 }
 
 /* =========================================================================
@@ -2158,6 +2191,13 @@
 }
 
 /* تبلت افقی */
+
+@media (max-width: 768px) {
+  .s5-brands-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
 @media (max-width: 1024px) {
   .s5-brands-grid {
     grid-template-columns: repeat(3, 1fr);
@@ -2299,6 +2339,10 @@
   min-height: 260px;
   height: 100%;
   overflow: visible;
+  .s6-challenge-card {
+    min-height: 135px !important;
+    height: auto !important;
+  }
 }
 
 .s6-challenge-card:hover {
@@ -2338,12 +2382,17 @@
   font-size: clamp(12px, 0.9vw, 13.5px);
   line-height: 1.7;
   color: #cbd5e1;
-  margin: 0;
-  max-height: none !important;
-  opacity: 1 !important;
-  transform: none !important;
-  overflow: visible !important;
-  display: block !important;
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(-6px);
+  transition:
+    max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    margin 0.35s ease !important;
 }
 
 /* راهکار — در هاور از پایین باز می‌شه */
@@ -2380,6 +2429,15 @@
   border-top-color: var(--border-glass);
 }
 
+.s6-challenge-card:hover .s6-challenge-text,
+.s6-challenge-card:focus-within .s6-challenge-text {
+  max-height: 260px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 6px !important;
+  transform: translateY(0);
+}
+
 .s6-check {
   font-weight: 900;
   color: var(--persian-green);
@@ -2411,7 +2469,7 @@
   }
 
   .s6-challenge-card {
-    min-height: 240px;
+    min-height: auto;
   }
 
   /* ریست وسط‌چینی */
@@ -2429,7 +2487,7 @@
 
   .s6-challenge-card {
     padding: 16px 14px;
-    min-height: 230px;
+    min-height: auto;
     gap: 10px;
   }
 
@@ -2526,7 +2584,7 @@
   background: rgba(0, 0, 0, 0.25);
   border: 1px solid var(--border-glass);
   border-radius: 16px;
-  padding: 16px 14px;
+  padding: 20px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -2563,6 +2621,7 @@
   background: rgba(255, 255, 255, 0.08);
   color: #cbd5e1;
   border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 12px 8px;
 }
 
 .s7-node-green {
@@ -2600,27 +2659,21 @@
   overflow: visible;
 }
 
-/* ---------- ستون چپ: ۴ مزیت ---------- */
 .slide7-left-stack {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  justify-content: space-between;
+  height: auto !important;
+  justify-content: flex-start !important;
+  gap: 12px !important;
 }
 
 .slide7-left-item {
-  flex: 1;
-  padding: 14px 16px;
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  align-self: stretch;
-  transform-origin: top center;
-  transition:
-    border-color 0.28s ease,
-    background 0.28s ease,
-    box-shadow 0.28s ease;
+  /* flex: none !important; */
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  width: 100% !important;
+  gap: 12px !important;
+  align-self: start !important;
+  transform-origin: top center !important;
 }
 
 .slide7-left-item:hover {
@@ -2684,16 +2737,64 @@
   margin: 0;
 }
 
+/* متن توضیحات آیتم‌ها: در حالت عادی مخفی */
 .s7-item-text {
   font-size: clamp(11.5px, 0.88vw, 13px);
   color: var(--text-muted);
   line-height: 1.65;
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
   margin: 0 !important;
-  max-height: none !important;
+  padding: 0 !important;
+  transform: translateY(-6px);
+  transition:
+    max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    margin 0.35s ease !important;
+}
+
+/* نمایش متن هنگام هاور شدن کارت */
+.slide7-left-item:hover .s7-item-text,
+.slide7-left-item:focus-within .s7-item-text {
+  max-height: 200px !important;
   opacity: 1 !important;
-  transform: none !important;
   overflow: visible !important;
-  display: block !important;
+  margin-top: 6px !important;
+  transform: translateY(0);
+}
+
+/* =========================================================================
+   SLIDE 07 — پرسنالایز رنگ هاور ۴ کارت مطابق شماره کارت
+   ========================================================================= */
+
+/* کارت ۱ — سبز (Persian Green) */
+.slide7-left-item:has(.s7-num-green):hover,
+.slide7-left-stack .slide7-left-item:nth-child(1):hover {
+  border-color: var(--persian-green) !important;
+  box-shadow: 0 18px 42px rgba(0, 212, 180, 0.35) !important;
+}
+
+/* کارت ۲ — نارنجی (Persian Orange) */
+.slide7-left-item:has(.s7-num-orange):hover,
+.slide7-left-stack .slide7-left-item:nth-child(2):hover {
+  border-color: var(--persian-orange) !important;
+  box-shadow: 0 18px 42px rgba(255, 119, 34, 0.35) !important;
+}
+
+/* کارت ۳ — آبی (Sky Blue) */
+.slide7-left-item:has(.s7-num-sky):hover,
+.slide7-left-stack .slide7-left-item:nth-child(3):hover {
+  border-color: var(--sky-blue) !important;
+  box-shadow: 0 18px 42px rgba(0, 147, 221, 0.35) !important;
+}
+
+/* کارت ۴ — بنفش (Purple) */
+.slide7-left-item:has(.s7-num-purple):hover,
+.slide7-left-stack .slide7-left-item:nth-child(4):hover {
+  border-color: #a78bfa !important;
+  box-shadow: 0 18px 42px rgba(167, 139, 250, 0.35) !important;
 }
 
 /* =========================================================================
@@ -2889,6 +2990,25 @@
     background 0.28s ease;
 }
 
+/* افکت هاور اختصاصی ۳ کارت بالانس در اسلاید ۸ */
+#balCard-welfare:hover {
+  border-color: var(--sky-blue) !important;
+  box-shadow: 0 18px 45px rgba(0, 147, 221, 0.35) !important;
+  transform: translateY(-3px) !important;
+}
+
+#balCard-credit:hover {
+  border-color: var(--persian-orange) !important;
+  box-shadow: 0 18px 45px rgba(255, 119, 34, 0.35) !important;
+  transform: translateY(-3px) !important;
+}
+
+#balCard-cash:hover {
+  border-color: var(--persian-green) !important;
+  box-shadow: 0 18px 45px rgba(0, 212, 180, 0.35) !important;
+  transform: translateY(-3px) !important;
+}
+
 .s8-balance-card:hover {
   transform: none !important;
 }
@@ -2985,9 +3105,11 @@
 /* iPhone — اندازه ریسپانسیو */
 .iphone-18-pro-max {
   width: 100% !important;
-  max-width: 340px;
+  max-width: 440px;
   height: auto;
-  aspect-ratio: 440 / 956;
+  aspect-ratio: 9 / 19.5;
+  border: 11px solid #1f2933 !important;
+
   border-radius: 48px !important;
   padding: 10px !important;
   background: #000000;
@@ -2997,10 +3119,11 @@
     0 30px 75px rgba(0, 0, 0, 0.85),
     0 0 36px rgba(0, 212, 180, 0.25);
   position: relative;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  margin: 0 auto;
+  margin: 0 16px;
 }
 
 .iphone-dynamic-island {
@@ -3201,19 +3324,16 @@
   );
   border: 1px solid var(--border-glass);
   border-radius: 20px;
-  padding: 20px 22px;
+  padding: 24px 22px;
   display: flex;
   flex-direction: column;
   gap: 10px;
   align-self: start;
   transform-origin: top center;
-  transition:
-    border-color 0.3s ease,
-    box-shadow 0.3s ease,
-    background 0.3s ease;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
-  height: 100%;
+  height: auto%;
 }
 
 /* نوار رنگی بالای کارت */
@@ -3295,12 +3415,12 @@
 }
 
 .s9-feature-card:hover .s9-icon {
-  transform: scale(1.12);
+  transform: scale(1.05);
 }
 
 /* عنوان */
 .s9-title {
-  font-size: clamp(15px, 1.2vw, 18px);
+  font-size: clamp(20px, 1.2vw, 18px);
   font-weight: 900;
   color: #ffffff;
   line-height: 1.4;
@@ -3313,12 +3433,26 @@
   font-size: clamp(12.5px, 0.95vw, 14px);
   line-height: 1.75;
   color: #cbd5e1;
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
   margin: 0 !important;
-  max-height: none !important;
+  padding: 0 !important;
+  transform: translateY(-6px);
+  transition:
+    max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    margin 0.35s ease !important;
+}
+
+.s9-feature-card:hover .s9-text,
+.s9-feature-card:focus-within .s9-text {
+  max-height: 300px !important;
   opacity: 1 !important;
-  transform: none !important;
   overflow: visible !important;
-  display: block !important;
+  margin-top: 8px !important;
+  transform: translateY(0);
 }
 
 .s9-text strong {
@@ -3501,11 +3635,12 @@
   flex-direction: column;
   gap: 12px;
   justify-content: flex-start;
-  height: auto;
+  height: 100%;
 }
 
 .s10-side-card {
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 10px;
   justify-content: flex-start;
@@ -3519,33 +3654,58 @@
     box-shadow 0.3s ease;
 }
 
+/* متن توضیحات: در حالت عادی مخفی */
+.s10-side-card .s10-side-text {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(-6px);
+  transition:
+    max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    margin 0.35s ease !important;
+}
+
+/* نمایش متن و بزرگ شدن کارت هنگام هاور */
+.s10-side-card:hover .s10-side-text,
+.s10-side-card:focus-within .s10-side-text {
+  max-height: 350px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 10px !important;
+  transform: translateY(0);
+}
+
 .s10-side-card:hover {
   transform: none !important;
 }
 
 /* رنگ‌های اختصاصی */
 .s10-side-green {
-  border-top: 3px solid var(--persian-green);
+  border-top: 3px solid var(--persian-green) !important;
 }
 .s10-side-green:hover {
-  border-color: var(--persian-green);
-  box-shadow: 0 20px 44px rgba(0, 212, 180, 0.18);
+  border-color: var(--persian-green) !important;
+  box-shadow: 0 20px 48px rgba(0, 212, 180, 0.35) !important;
 }
 
 .s10-side-orange {
-  border-top: 3px solid var(--persian-orange);
+  border-top: 3px solid var(--persian-orange) !important;
 }
 .s10-side-orange:hover {
-  border-color: var(--persian-orange);
-  box-shadow: 0 20px 44px rgba(255, 119, 34, 0.18);
+  border-color: var(--persian-orange) !important;
+  box-shadow: 0 20px 48px rgba(255, 119, 34, 0.35) !important;
 }
 
 .s10-side-sky {
-  border-top: 3px solid var(--sky-blue);
+  border-top: 3px solid var(--sky-blue) !important;
 }
 .s10-side-sky:hover {
-  border-color: var(--sky-blue);
-  box-shadow: 0 20px 44px rgba(0, 147, 221, 0.18);
+  border-color: var(--sky-blue) !important;
+  box-shadow: 0 20px 48px rgba(0, 147, 221, 0.35) !important;
 }
 
 .s10-side-badge {
@@ -3881,20 +4041,20 @@
   border-right: 5px solid var(--persian-green);
 }
 
-.s11-main-card-sky {
-  border-right: 5px solid var(--sky-blue);
-}
-
-.s11-main-card-purple {
-  border-right: 5px solid #a78bfa;
-}
-
-.s11-main-card-orange {
-  border-right: 5px solid var(--persian-orange);
+.s11-main-card-green:hover {
+  border-right: 5px solid var(--persian-green) !important;
+  border-color: var(--persian-green) !important;
+  box-shadow: 0 20px 48px rgba(0, 212, 180, 0.35) !important;
 }
 
 .s11-main-card-pink {
   border-right: 5px solid #f16273;
+}
+
+.s11-main-card-pink:hover {
+  border-right: 5px solid #f16273 !important;
+  border-color: #f16273 !important;
+  box-shadow: 0 20px 48px rgba(241, 98, 115, 0.35) !important;
 }
 
 .s11-badge-row {
@@ -3945,6 +4105,56 @@
   display: block !important;
 }
 
+/* متن اصلی کارت: در حالت عادی مخفی */
+.s11-main-card .s11-main-text {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(-6px);
+  transition:
+    max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    margin 0.35s ease !important;
+}
+
+/* نمایش متن اصلی کارت به هنگام هاور شدن کارت */
+.s11-main-card:hover .s11-main-text,
+.s11-main-card:focus-within .s11-main-text {
+  max-height: 300px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 10px !important;
+  transform: translateY(0);
+}
+
+/* متن زیرنویس نکات (tip-sub): در حالت عادی مخفی */
+.s11-tip-box .s11-tip-sub {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(-4px);
+  transition:
+    max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    margin 0.3s ease !important;
+}
+
+/* نمایش متن زیرنویس نکته به هنگام هاور شدن روی باکس نکته */
+.s11-tip-box:hover .s11-tip-sub,
+.s11-tip-box:focus-within .s11-tip-sub {
+  max-height: 150px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 6px !important;
+  transform: translateY(0);
+}
+
 .s11-main-text strong {
   color: #ffffff;
   font-weight: 900;
@@ -3955,7 +4165,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  margin-top: 4px;
+  margin-top: 24px;
 }
 
 .s11-tip-box {
@@ -4221,6 +4431,12 @@
   border-right: 5px solid var(--sky-blue);
 }
 
+.s12-main-card-sky:hover {
+  border-right: 5px solid var(--sky-blue) !important;
+  border-color: var(--sky-blue) !important;
+  box-shadow: 0 20px 48px rgba(0, 147, 221, 0.35) !important;
+}
+
 .s12-badge-row {
   display: flex;
   align-items: center;
@@ -4269,6 +4485,56 @@
   display: block !important;
 }
 
+/* متن اصلی کارت: در حالت عادی مخفی */
+.s12-main-card .s12-main-text {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(-6px);
+  transition:
+    max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    margin 0.35s ease !important;
+}
+
+/* نمایش متن اصلی کارت به هنگام هاور شدن کارت */
+.s12-main-card:hover .s12-main-text,
+.s12-main-card:focus-within .s12-main-text {
+  max-height: 300px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 10px !important;
+  transform: translateY(0);
+}
+
+/* متن زیرنویس نکات (tip-sub): در حالت عادی مخفی */
+.s12-tip-box .s12-tip-sub {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(-4px);
+  transition:
+    max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    margin 0.3s ease !important;
+}
+
+/* نمایش متن زیرنویس نکته به هنگام هاور شدن روی باکس نکته */
+.s12-tip-box:hover .s12-tip-sub,
+.s12-tip-box:focus-within .s12-tip-sub {
+  max-height: 150px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 6px !important;
+  transform: translateY(0);
+}
+
 .s12-main-text strong {
   color: #ffffff;
   font-weight: 900;
@@ -4279,7 +4545,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 10px;
-  margin-top: 4px;
+  margin-top: 24px;
 }
 
 .s12-tip-box {
@@ -4532,6 +4798,12 @@
   border-right: 5px solid #a78bfa;
 }
 
+.s13-main-card-purple:hover {
+  border-right: 5px solid #a78bfa !important;
+  border-color: #a78bfa !important;
+  box-shadow: 0 20px 48px rgba(167, 139, 250, 0.35) !important;
+}
+
 /* متن بالای بالا با رنگ بنفش */
 .s13-hint-purple {
   color: #a78bfa;
@@ -4583,6 +4855,80 @@
   transform: none !important;
   overflow: visible !important;
   display: block !important;
+}
+
+/* متن اصلی کارت: در حالت عادی مخفی */
+.s13-main-card .s13-main-text {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(-6px);
+  transition:
+    max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    margin 0.35s ease !important;
+}
+
+/* نمایش متن اصلی کارت به هنگام هاور شدن کارت */
+.s13-main-card:hover .s13-main-text,
+.s13-main-card:focus-within .s13-main-text {
+  max-height: 300px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 10px !important;
+  transform: translateY(0);
+}
+
+/* متن زیرنویس نکات (tip-sub): در حالت عادی مخفی */
+.s13-option-cash .s13-list {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(-4px);
+  transition:
+    max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    margin 0.3s ease !important;
+}
+
+/* نمایش متن زیرنویس نکته به هنگام هاور شدن روی باکس نکته */
+.s13-option-cash:hover .s13-list,
+.s13-option-cash:focus-within .s13-list {
+  max-height: 150px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 6px !important;
+  transform: translateY(0);
+}
+
+.s13-option-installment .s13-list {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(-4px);
+  transition:
+    max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    margin 0.3s ease !important;
+}
+
+/* نمایش متن زیرنویس نکته به هنگام هاور شدن روی باکس نکته */
+.s13-option-installment:hover .s13-list,
+.s13-option-installment:focus-within .s13-list {
+  max-height: 150px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 6px !important;
+  transform: translateY(0);
 }
 
 .s13-main-text strong {
@@ -4858,6 +5204,12 @@
   border-right: 5px solid var(--persian-green);
 }
 
+.s14-main-card-green:hover {
+  border-right: 5px solid var(--persian-green) !important;
+  border-color: var(--persian-green) !important;
+  box-shadow: 0 20px 48px rgba(0, 212, 180, 0.35) !important;
+}
+
 .s14-badge-row {
   display: flex;
   align-items: center;
@@ -4904,6 +5256,79 @@
   transform: none !important;
   overflow: visible !important;
   display: block !important;
+}
+
+/* متن اصلی کارت: در حالت عادی مخفی */
+.s14-main-card .s14-main-text {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(-6px);
+  transition:
+    max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    margin 0.35s ease !important;
+}
+
+/* نمایش متن اصلی کارت به هنگام هاور شدن کارت */
+.s14-main-card:hover .s14-main-text,
+.s14-main-card:focus-within .s14-main-text {
+  max-height: 300px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 10px !important;
+  transform: translateY(0);
+}
+
+/* متن زیرنویس نکات (tip-sub): در حالت عادی مخفی */
+.s14-info-box .s14-list {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(-4px);
+  transition:
+    max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    margin 0.3s ease !important;
+}
+
+.s14-info-box .s14-info-text {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(-4px);
+  transition:
+    max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    margin 0.3s ease !important;
+}
+
+/* نمایش متن زیرنویس نکته به هنگام هاور شدن روی باکس نکته */
+.s14-info-box:hover .s14-info-text,
+.s14-info-box:focus-within .s14-info-text {
+  max-height: 150px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 6px !important;
+  transform: translateY(0);
+}
+
+.s14-info-box:hover .s14-list,
+.s14-info-box:focus-within .s14-list {
+  max-height: 150px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 6px !important;
+  transform: translateY(0);
 }
 
 .s14-main-text strong {
@@ -5210,7 +5635,13 @@
 
 /* رنگ نوار سمت راست کارت اصلی */
 .s15-main-card-pink {
-  border-right: 5px solid var(--persian-rose);
+  border-right: 5px solid var(--persian-pink);
+}
+
+.s15-main-card-pink:hover {
+  border-right: 5px solid var(--persian-pink) !important;
+  border-color: var(--persian-pink) !important;
+  box-shadow: 0 20px 48px rgba(255, 165, 0, 0.35) !important;
 }
 
 .s15-badge-row {
@@ -5259,6 +5690,56 @@
   transform: none !important;
   overflow: visible !important;
   display: block !important;
+}
+
+/* متن اصلی کارت: در حالت عادی مخفی */
+.s15-main-card .s15-main-text {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(-6px);
+  transition:
+    max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    margin 0.35s ease !important;
+}
+
+/* نمایش متن اصلی کارت به هنگام هاور شدن کارت */
+.s15-main-card:hover .s15-main-text,
+.s15-main-card:focus-within .s15-main-text {
+  max-height: 300px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 10px !important;
+  transform: translateY(0);
+}
+
+/* متن زیرنویس نکات (tip-sub): در حالت عادی مخفی */
+.s15-tip-box .s15-tip-sub {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(-4px);
+  transition:
+    max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    margin 0.3s ease !important;
+}
+
+/* نمایش متن زیرنویس نکته به هنگام هاور شدن روی باکس نکته */
+.s15-tip-box:hover .s15-tip-sub,
+.s15-tip-box:focus-within .s15-tip-sub {
+  max-height: 150px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 6px !important;
+  transform: translateY(0);
 }
 
 .s15-main-text strong {
