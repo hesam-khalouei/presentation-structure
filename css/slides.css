@@ -4047,16 +4047,6 @@
   box-shadow: 0 20px 48px rgba(0, 212, 180, 0.35) !important;
 }
 
-.s11-main-card-pink {
-  border-right: 5px solid #f16273;
-}
-
-.s11-main-card-pink:hover {
-  border-right: 5px solid #f16273 !important;
-  border-color: #f16273 !important;
-  box-shadow: 0 20px 48px rgba(241, 98, 115, 0.35) !important;
-}
-
 .s11-badge-row {
   display: flex;
   align-items: center;
@@ -5635,13 +5625,13 @@
 
 /* رنگ نوار سمت راست کارت اصلی */
 .s15-main-card-pink {
-  border-right: 5px solid var(--persian-pink);
+  border-right: 5px solid var(--persian-rose);
 }
 
 .s15-main-card-pink:hover {
-  border-right: 5px solid var(--persian-pink) !important;
-  border-color: var(--persian-pink) !important;
-  box-shadow: 0 20px 48px rgba(255, 165, 0, 0.35) !important;
+  border-right: 5px solid var(--persian-rose) !important;
+  border-color: var(--persian-rose) !important;
+  box-shadow: 0 20px 48px rgba(241, 98, 115, 0.35) !important;
 }
 
 .s15-badge-row {
@@ -5655,7 +5645,7 @@
   display: inline-flex;
   align-items: center;
   padding: 5px 14px;
-  background: var(--persian-orange);
+  background: var(--persian-rose);
   color: #ffffff;
   border-radius: 999px;
   font-size: clamp(11px, 0.9vw, 13px);
@@ -5666,7 +5656,7 @@
 
 .s15-step-hint {
   font-size: clamp(11.5px, 0.9vw, 13.5px);
-  color: var(--persian-orange);
+  color: var(--persian-rose);
   font-weight: 900;
 }
 
@@ -5718,7 +5708,7 @@
 }
 
 /* متن زیرنویس نکات (tip-sub): در حالت عادی مخفی */
-.s15-tip-box .s15-tip-sub {
+.s15-info-box .s15-info-text {
   max-height: 0 !important;
   opacity: 0 !important;
   overflow: hidden !important;
@@ -5733,8 +5723,8 @@
 }
 
 /* نمایش متن زیرنویس نکته به هنگام هاور شدن روی باکس نکته */
-.s15-tip-box:hover .s15-tip-sub,
-.s15-tip-box:focus-within .s15-tip-sub {
+.s15-info-box:hover .s15-info-text,
+.s15-info-box:focus-within .s15-info-text {
   max-height: 150px !important;
   opacity: 1 !important;
   overflow: visible !important;
@@ -5769,8 +5759,8 @@
 }
 
 .s15-penalty-card {
-  background: rgba(255, 119, 34, 0.1);
-  border: 1.5px solid var(--persian-orange);
+  background: rgba(255, 34, 67, 0.1);
+  border: 1.5px solid var(--persian-rose);
 }
 
 .s15-penalty-card:hover {
@@ -6513,6 +6503,11 @@
 .text-orange {
   color: var(--persian-orange);
 }
+
+.text-rose {
+  color: var(--persian-rose);
+}
+
 .text-sky {
   color: var(--sky-blue);
 }

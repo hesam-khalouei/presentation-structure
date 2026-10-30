@@ -68,6 +68,12 @@
   color: var(--persian-orange);
 }
 
+.eyebrow-badge.rose {
+  background: var(--persian-rose-soft);
+  border-color: rgba(255, 34, 67, 0.4);
+  color: var(--persian-rose);
+}
+
 .vessel-pill {
   display: inline-flex;
   align-items: center;
