@@ -8281,19 +8281,6 @@
   margin: 0;
 }
 
-/* .s21-pillar .why-pillar-desc {
-  font-size: clamp(11.5px, 0.88vw, 13px);
-  font-weight: 700;
-  color: #e2e8f0;
-  line-height: 1.6;
-  margin: 0 !important;
-  max-height: none !important;
-  opacity: 1 !important;
-  transform: none !important;
-  overflow: visible !important;
-  display: block !important;
-} */
-
 .s21-pillar .why-pillar-desc {
 max-height: 0 !important;
   opacity: 0 !important;

@@ -1,30 +1,32 @@
+<!-- SLIDE 8: PWA DEMO -->
 <section
-  class="slide active"
+  class="slide"
   data-chapter="1"
-  data-title="دموی تعاملی سوپراپلیکیشن اوانو و سه بالانس سازمانی">
+  data-title="دموی تعاملی سوپراپلیکیشن اوانو و سه بالانس سازمانی"
+>
   <div class="slide-inner">
-    <div class="slide-top-meta anim-up delay-1">
-      <span class="eyebrow-badge">دموی تعاملی سوپراپلیکیشن اوانو</span>
-      <span class="slide-top-meta-hint"
-        >اجرا و بررسی مستقیم سوپراپلیکیشن اوانو</span
-      >
-    </div>
-
-    <h2 class="slide-headline anim-up delay-2">
-      دموی تعاملی <span class="accent-green">سوپراپلیکیشن اوانو</span>:
-      <span class="accent-orange">اعتباری</span>
-      <span class="headline-divider">|</span>
-      <span class="text-sky">رفاهی</span>
-      <span class="headline-divider">|</span>
-      <span class="accent-green">نقدی</span>
-    </h2>
-
     <div class="demo-slide-grid anim-up delay-3">
-      <!-- ستون چپ: ۳ کارت بالانس -->
+      <!-- ستون راست: تیتر و ۳ کارت بالانس -->
       <div class="demo-left-col">
-        <div
-          class="glass-card s8-balance-card s8-balance-card-sky"
-          id="balCard-welfare">
+        <!-- هدر اسلاید و تیتر یکپارچه -->
+        <div class="s8-header-wrapper">
+          <div class="slide-top-meta s8-top-meta anim-up delay-1">
+            <span class="eyebrow-badge">دموی تعاملی سوپراپلیکیشن اوانو</span>
+            <span>اجرا و بررسی مستقیم سوپراپلیکیشن اوانو</span>
+          </div>
+
+          <h2 class="slide-headline s8-headline anim-up delay-2">
+            دموی تعاملی <span class="accent-green">سوپراپلیکیشن اوانو</span>:
+            <span class="accent-orange">اعتباری</span>
+            <span class="headline-divider">|</span>
+            <span class="text-sky">رفاهی</span>
+            <span class="headline-divider">|</span>
+            <span class="accent-green">نقدی</span>
+          </h2>
+        </div>
+
+        <!-- کارت ۱: رفاهی (آبی) -->
+        <div class="glass-card s8-balance-card" id="balCard-welfare">
           <div class="s8-balance-head">
             <h3 class="s8-balance-title text-sky">۱. موجودی رفاهی سازمانی</h3>
             <span class="s8-balance-badge s8-badge-sky">سرفصل‌های انتخابی</span>
@@ -36,9 +38,8 @@
           </p>
         </div>
 
-        <div
-          class="glass-card s8-balance-card s8-balance-card-orange"
-          id="balCard-credit">
+        <!-- کارت ۲: اعتباری (نارنجی) -->
+        <div class="glass-card s8-balance-card" id="balCard-credit">
           <div class="s8-balance-head">
             <h3 class="s8-balance-title text-orange">
               ۲. موجودی اعتباری (BNPL)
@@ -51,9 +52,8 @@
           </p>
         </div>
 
-        <div
-          class="glass-card s8-balance-card s8-balance-card-green"
-          id="balCard-cash">
+        <!-- کارت ۳: نقدی (سبز) -->
+        <div class="glass-card s8-balance-card" id="balCard-cash">
           <div class="s8-balance-head">
             <h3 class="s8-balance-title text-green">
               ۳. موجودی نقدی (اوانو کارت)
@@ -67,19 +67,20 @@
         </div>
       </div>
 
-      <!-- ستون راست: گوشی -->
-      <div class="demo-wrap">
+      <!-- ستون چپ: فریم گوشی iPhone -->
+      <div class="demo-phone-col">
         <div class="iphone-18-pro-max">
           <div class="iphone-dynamic-island">
-            <span class="island-camera"></span>
-            <span class="island-sensor"></span>
+            <div class="island-camera"></div>
+            <div class="island-sensor"></div>
           </div>
           <div class="iphone-screen-wrap">
             <iframe
               src="https://static-ebcom.mci.ir/ecm/ewano/pwa"
               class="iphone-pwa-iframe"
               title="دموی تعاملی سوپراپلیکیشن اوانو"
-              allow="geolocation; microphone; camera; payment"></iframe>
+              allow="geolocation; microphone; camera; payment"
+            ></iframe>
           </div>
         </div>
       </div>
