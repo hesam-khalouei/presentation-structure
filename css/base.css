@@ -104,8 +104,9 @@
 html,
 body {
   width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
   background-color: var(--bg-dark);
   color: var(--text-light);
   font-family: var(--font-main);
@@ -330,12 +331,11 @@ svg text,
     transform: translateX(-50%);
   }
 }
-.stage-container {
+/* .stage-container {
   position: relative;
   z-index: 1;
   width: 100vw;
   height: 100vh;
   padding-top: 88px; /* ارتفاع هدر */
   padding-bottom: 88px; /* ارتفاع فوتر */
-  overflow: hidden;
-}
+  overflow: hidden; } */

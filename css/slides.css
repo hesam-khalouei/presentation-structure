@@ -171,7 +171,10 @@
     transform 0.55s cubic-bezier(0.16, 1, 0.3, 1),
     visibility 0.55s;
   pointer-events: none;
-  overflow-y: auto;
+  
+  /* تنظیمات حیاتی برای فعال‌سازی اسکرول */
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
 }
 
 .slide.active {
@@ -186,11 +189,12 @@
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  height: 100%;
+  min-height: 100%; /* استفاده از min-height به جای height ثابت */
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  justify-content: flex-start; /* جلوگیری از فشرده شدن محتوای اضافی در وسط صفحه */
   gap: 20px;
+  padding-bottom: 40px;
 }
 
 /* اسلایدهای خاص که عمداً وسط‌چین می‌مونن */
@@ -273,7 +277,7 @@
 }
 
 .brand-tile::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -687,27 +691,27 @@
   color: #e2e8f0 !important;
 }
 
-.slide[data-chapter='2'] p {
+.slide[data-chapter="2"] p {
   font-size: 16.5px !important;
   line-height: 2 !important;
 }
 
-.slide[data-chapter='2'] .grid-2 div,
-.slide[data-chapter='2'] .grid-3 div,
-.slide[data-chapter='2'] ul li {
+.slide[data-chapter="2"] .grid-2 div,
+.slide[data-chapter="2"] .grid-3 div,
+.slide[data-chapter="2"] ul li {
   font-size: 14.5px !important;
   line-height: 1.9 !important;
 }
 
-.slide[data-chapter='2'] h2 {
+.slide[data-chapter="2"] h2 {
   font-size: clamp(26px, 2.4vw, 34px) !important;
 }
 
-.slide[data-chapter='0'] .ecosystem-layout {
+.slide[data-chapter="0"] .ecosystem-layout {
   grid-template-columns: 1.12fr 0.88fr !important;
 }
 
-.slide[data-chapter='0'] svg text {
+.slide[data-chapter="0"] svg text {
   font-size: 13px !important;
 }
 
@@ -740,7 +744,7 @@
 }
 
 /* Slide 8 Demo Layout */
-.slide[data-title='دموی تعاملی سوپراپلیکیشن اوانو و سه بالانس سازمانی']
+.slide[data-title="دموی تعاملی سوپراپلیکیشن اوانو و سه بالانس سازمانی"]
   .demo-slide-grid {
   display: grid !important;
   grid-template-columns: 1fr 1fr !important;
@@ -749,7 +753,7 @@
   margin-top: 10px !important;
 }
 
-.slide[data-title='دموی تعاملی سوپراپلیکیشن اوانو و سه بالانس سازمانی']
+.slide[data-title="دموی تعاملی سوپراپلیکیشن اوانو و سه بالانس سازمانی"]
   .demo-left-col {
   display: flex !important;
   flex-direction: column !important;
@@ -758,7 +762,7 @@
   gap: 16px !important;
 }
 
-.slide[data-title='دموی تعاملی سوپراپلیکیشن اوانو و سه بالانس سازمانی']
+.slide[data-title="دموی تعاملی سوپراپلیکیشن اوانو و سه بالانس سازمانی"]
   .demo-left-col
   .glass-card {
   flex: 1;
@@ -813,14 +817,14 @@
 }
 
 /* Slide 2 Companies Grid */
-.slide[data-chapter='0'] .companies-grid {
+.slide[data-chapter="0"] .companies-grid {
   display: grid !important;
   grid-template-columns: repeat(3, 1fr) !important;
   gap: 10px !important;
   align-items: start !important;
 }
 
-.slide[data-chapter='0'] .companies-grid .company-pill {
+.slide[data-chapter="0"] .companies-grid .company-pill {
   height: 52px;
   box-sizing: border-box;
 }
@@ -1339,15 +1343,15 @@
     font-size: 13px !important;
   }
 
-  .s2-diagram-svg text[font-size='20'] {
+  .s2-diagram-svg text[font-size="20"] {
     font-size: 16px !important;
   }
 
-  .s2-diagram-svg text[font-size='17'] {
+  .s2-diagram-svg text[font-size="17"] {
     font-size: 14px !important;
   }
 
-  .s2-diagram-svg text[font-size='15'] {
+  .s2-diagram-svg text[font-size="15"] {
     font-size: 12px !important;
   }
 
@@ -2033,8 +2037,8 @@
     grid-template-columns: 44px 1fr;
     grid-template-rows: auto auto;
     grid-template-areas:
-      'icon title'
-      'icon badge';
+      "icon title"
+      "icon badge";
     column-gap: 12px;
     row-gap: 2px;
     align-items: center;
@@ -2099,7 +2103,7 @@
 }
 
 .s5-brand-tile::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   right: 0;
@@ -3338,7 +3342,7 @@
 
 /* نوار رنگی بالای کارت */
 .s9-feature-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -3602,7 +3606,7 @@
   text-align: right;
   line-height: 1.5;
   margin-top: 4px;
-  font-family: 'IRANYekanX', 'Vazirmatn', monospace;
+  font-family: "IRANYekanX", "Vazirmatn", monospace;
   word-break: break-word;
 }
 
@@ -5138,19 +5142,19 @@
   }
 
   /* کوچک‌تر کردن فونت‌های داخل SVG */
-  .s13-visual-svg text[font-size='13'] {
+  .s13-visual-svg text[font-size="13"] {
     font-size: 11px !important;
   }
 
-  .s13-visual-svg text[font-size='12'] {
+  .s13-visual-svg text[font-size="12"] {
     font-size: 10.5px !important;
   }
 
-  .s13-visual-svg text[font-size='10.5'] {
+  .s13-visual-svg text[font-size="10.5"] {
     font-size: 9.5px !important;
   }
 
-  .s13-visual-svg text[font-size='9.5'] {
+  .s13-visual-svg text[font-size="9.5"] {
     font-size: 8.5px !important;
   }
 }
@@ -5580,15 +5584,15 @@
   }
 
   /* فونت‌های SVG */
-  .s14-visual-svg text[font-size='18'] {
+  .s14-visual-svg text[font-size="18"] {
     font-size: 16px !important;
   }
 
-  .s14-visual-svg text[font-size='12'] {
+  .s14-visual-svg text[font-size="12"] {
     font-size: 11px !important;
   }
 
-  .s14-visual-svg text[font-size='10.5'] {
+  .s14-visual-svg text[font-size="10.5"] {
     font-size: 9.5px !important;
   }
 }
@@ -6089,7 +6093,7 @@
 .s16-card-sky:hover {
   border-top: 5px solid var(--sky-blue) !important;
   border-color: var(--sky-blue) !important;
-  box-shadow: 0 20px 48px  rgba(0, 147, 221, 0.35) !important;
+  box-shadow: 0 20px 48px rgba(0, 147, 221, 0.35) !important;
 }
 
 .s16-card:hover {
@@ -6524,7 +6528,7 @@
 .s17-alloc-orange:hover {
   border-right: 5px solid var(--persian-orange) !important;
   border-color: var(--persian-orange) !important;
-  box-shadow: 0 20px 48px  rgba(255, 119, 34, 0.35) !important;
+  box-shadow: 0 20px 48px rgba(255, 119, 34, 0.35) !important;
 }
 
 .s17-alloc-sky {
@@ -6561,7 +6565,6 @@
   background: var(--persian-green-soft);
   color: var(--persian-green);
 }
-
 
 .s17-num-orange {
   background: var(--persian-orange-soft);
@@ -6854,14 +6857,14 @@
   transition:
     border-color 0.3s ease,
     box-shadow 0.3s ease;
-  }
+}
 
 .s18-pay-card:hover {
   transform: none !important;
 }
 
 .s18-card-green {
-   border-right: 5px solid var(--persian-green) !important;
+  border-right: 5px solid var(--persian-green) !important;
 }
 
 .s18-card-green:hover {
@@ -6871,7 +6874,7 @@
 }
 
 .s18-card-orange {
-   border-right: 5px solid var(--persian-orange) !important;
+  border-right: 5px solid var(--persian-orange) !important;
 }
 
 .s18-card-orange:hover {
@@ -7016,7 +7019,7 @@
 }
 
 .s18-list li::before {
-  content: '✓ ';
+  content: "✓ ";
   color: var(--persian-green);
   font-weight: 900;
   margin-left: 2px;
@@ -7345,20 +7348,6 @@
 }
 
 /* ── UX Flow ── */
-.s19-ux-card {
-  padding: 22px 26px;
-  border: 1.5px solid var(--border-green);
-  background: linear-gradient(
-    145deg,
-    rgba(0, 212, 180, 0.09) 0%,
-    rgba(17, 24, 31, 0.95) 100%
-  );
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-}
-
 .s19-ux-card:hover {
   border-color: var(--persian-green) !important;
 }
@@ -7449,7 +7438,7 @@
 }
 
 .s19-list li::before {
-  content: '✓';
+  content: "✓";
   position: absolute;
   right: 0;
   top: 0;
@@ -7498,7 +7487,6 @@
   border-radius: 12px;
 }
 
-
 .s19-val-section-orange {
   background: rgba(255, 119, 34, 0.08);
 }
@@ -7535,10 +7523,10 @@
     rgba(0, 212, 180, 0.09) 0%,
     rgba(17, 24, 31, 0.95) 100%
   );
-  margin-top: 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
 }
 
 .s19-ux-title {
@@ -7819,12 +7807,7 @@
   flex-direction: column;
   gap: 12px;
   min-width: 0;
-}
-
-.s20-stats-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  min-height: 100%;
 }
 
 /* کارت آمار */
@@ -7954,11 +7937,6 @@
     max-height: 380px;
   }
 
-  .s20-stats-grid {
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-
   .s20-stat-card {
     padding: 14px 16px;
   }
@@ -8084,23 +8062,30 @@
 }
 
 .s21-stat-green {
-  --s21-accent: var(--persian-green);
+  border-top: 4px solid var(--persian-green) !important;
 }
 .s21-stat-green:hover {
-  box-shadow: 0 16px 38px rgba(0, 212, 180, 0.16);
+  border-top: 4px solid var(--persian-green) !important;
+  border-color: var(--persian-green) !important;
+  box-shadow: 0 16px 38px rgba(0, 212, 180, 0.35) !important;
 }
 
 .s21-stat-orange {
-  --s21-accent: var(--persian-orange);
+  border-top: 4px solid var(--persian-orange) !important;
 }
+
 .s21-stat-orange:hover {
-  box-shadow: 0 16px 38px rgba(255, 119, 34, 0.16);
+  border-top: 4px solid var(--persian-orange) !important;
+  border-color: var(--persian-orange) !important;
+  box-shadow: 0 16px 38px rgba(255, 119, 34, 0.35) !important;
 }
 
 .s21-stat-sky {
-  --s21-accent: var(--sky-blue);
+  border-top: 4px solid var(--sky-blue) !important;
 }
 .s21-stat-sky:hover {
+  border-top: 4px solid var(--sky-blue) !important;
+  border-color: var(--sky-blue) !important;
   box-shadow: 0 16px 38px rgba(0, 147, 221, 0.16);
 }
 
@@ -8109,7 +8094,18 @@
   font-weight: 900;
   line-height: 1.2;
   letter-spacing: -0.4px;
-  color: var(--s21-accent, var(--persian-green));
+}
+
+.s21-stat-value-green {
+  color: var(--persian-green);
+}
+
+.s21-stat-value-orange {
+  color: var(--persian-orange);
+}
+
+.s21-stat-value-blue {
+  color: var(--sky-blue);
 }
 
 .s21-stat-label {
@@ -8137,6 +8133,7 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
 }
 
 .s21-clients-head {
@@ -8284,7 +8281,7 @@
   margin: 0;
 }
 
-.s21-pillar .why-pillar-desc {
+/* .s21-pillar .why-pillar-desc {
   font-size: clamp(11.5px, 0.88vw, 13px);
   font-weight: 700;
   color: #e2e8f0;
@@ -8295,6 +8292,29 @@
   transform: none !important;
   overflow: visible !important;
   display: block !important;
+} */
+
+.s21-pillar .why-pillar-desc {
+max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  transform: translateY(-6px);
+  transition:
+    max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    margin 0.35s ease !important;
+}
+
+/* نمایش متن و برندها به هنگام هاور شدن روی کارت رفاهی */
+.s21-pillar:hover .why-pillar-desc,
+.s21-pillar:focus-within .why-pillar-desc {
+  max-height: 200px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 8px !important;
+  transform: translateY(0);
 }
 
 /* =========================================================================

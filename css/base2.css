@@ -1,0 +1,219 @@
+/* ═══════════════════════════════════════════════════════════════
+   EWANO B2B — Base Architecture & Layout CSS
+   ───────────────────────────────────────────────────────────────
+   • CSS Reset & Box Sizing
+   • Design Tokens & CSS Variables
+   • Global Layout & Scroll Lock (No Horizontal, Smooth Vertical)
+   • Header (68px) & Footer (64px) Frame Contract
+   • Main Slide Container & Slide Archetype
+   • Typography Defaults & Selection Styles
+   • Custom Scrollbar Engine
+   ═══════════════════════════════════════════════════════════════ */
+
+/* =========================================================================
+   1. CSS RESET & VARIABLES
+   ========================================================================= */
+:root {
+  /* Dimensions Contract */
+  --header-height: 68px;
+  --footer-height: 64px;
+  --viewport-content-height: calc(100vh - var(--header-height) - var(--footer-height));
+
+  /* Color Palette */
+  --persian-green: #00d4b4;
+  --persian-green-soft: rgba(0, 212, 180, 0.12);
+  --persian-green-glow: rgba(0, 212, 180, 0.35);
+  --border-green: rgba(0, 212, 180, 0.3);
+
+  --persian-orange: #ff7722;
+  --persian-orange-soft: rgba(255, 119, 34, 0.12);
+  --persian-rose-soft: rgba(255, 34, 67, 0.12);
+  --sky-blue: #38bdf8;
+
+  --bg-dark: #0b0f13;
+  --bg-surface: #11181f;
+  --border-glass: rgba(255, 255, 255, 0.12);
+  --text-main: #ffffff;
+  --text-muted: #cbd5e1;
+
+  /* Typography */
+  --font-main: "IRANYekanX", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border-width: 0;
+  border-style: solid;
+}
+
+/* =========================================================================
+   2. GLOBAL DOCUMENT & SCROLL ARCHITECTURE
+   ========================================================================= */
+html {
+  font-family: var(--font-main);
+  background-color: var(--bg-dark);
+  color: var(--text-main);
+  direction: rtl;
+  font-feature-settings: "ss01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  
+  /* اسکرول افقی تحت هیچ شرایطی فعال نمی‌شود */
+  overflow-x: hidden;
+  /* اسکرول روان عمودی در سطح سند */
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-dark);
+  overflow-x: hidden;
+  overflow-y: visible;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* جلوگیری از بیرون زدن محتوای رسانه‌ای */
+img,
+svg,
+video,
+canvas,
+iframe {
+  display: block;
+  max-width: 100%;
+}
+
+/* =========================================================================
+   3. APP SHELL FRAMEWORK (Header 68px, Footer 64px)
+   ========================================================================= */
+/* هدر فیکس یا استیکی با ارتفاع مشخص */
+.app-header {
+  height: var(--header-height);
+  min-height: var(--header-height);
+  max-height: var(--header-height);
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  background: rgba(11, 15, 19, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-glass);
+}
+
+/* نگهدارنده اصلی بادی (Deck Presentation Wrapper) */
+.app-main {
+  flex: 1 0 auto;
+  width: 100%;
+  max-width: 100%;
+  margin-top: var(--header-height);
+  margin-bottom: var(--footer-height);
+  overflow-x: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* فوتر هماهنگ با کلاس‌های موجود (ارتفاع استاندارد ۶۴ پیکسل) */
+.deck-footer {
+  height: var(--footer-height);
+  min-height: var(--footer-height);
+  max-height: var(--footer-height);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 90;
+  box-sizing: border-box;
+}
+
+/* =========================================================================
+   4. SLIDE SYSTEM & STACKING CONTRACT
+   ========================================================================= */
+/* ساختار پایه اسلایدها */
+.slide-section {
+  width: 100%;
+  min-height: var(--viewport-content-height);
+  position: relative;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 40px 32px;
+  box-sizing: border-box;
+  transform-origin: top center;
+}
+
+/* نگهدارنده درون هر اسلاید برای جلوگیری از stretch شدن غیرعادی */
+.slide-container {
+  width: 100%;
+  max-width: 1380px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+/* نمونه مدیریت اختصاصی z-index و استایل هر اسلاید */
+.slide-section[data-slide-index="1"],
+.slide-section:nth-child(1) {
+  z-index: 1;
+}
+
+.slide-section[data-slide-index="2"],
+.slide-section:nth-child(2) {
+  z-index: 2;
+}
+
+.slide-section[data-slide-index="3"],
+.slide-section:nth-child(3) {
+  z-index: 3;
+}
+
+/* پشتیبانی از اسلایدهای تک‌صفحه‌ای بدون اسکرول داخلی ناخواسته */
+.slide-section.fullscreen-lock {
+  height: var(--viewport-content-height);
+  max-height: var(--viewport-content-height);
+  overflow: hidden;
+}
+
+/* =========================================================================
+   5. SELECTION & SCROLLBAR ENGINE
+   ========================================================================= */
+::selection {
+  background: var(--persian-green);
+  color: #0b0f13;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090d11;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  border: 2px solid #090d11;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--persian-green);
+}
