@@ -936,10 +936,10 @@
    ========================================================================= */
 .voucher-vertical-stage {
   position: relative;
-  height: 420px;
+  height: 520px;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
   perspective: 1200px;
 }
 .voucher-card-item {
@@ -1250,6 +1250,7 @@
   display: flex;
   width: max-content;
   animation: lm-slide var(--lm-dur, 45s) linear infinite;
+  padding: 8px 0px;
 }
 .lm-set {
   display: flex;
@@ -1739,7 +1740,7 @@
 .service-tile.active {
   transform: none !important;
   /* border-color: var(--persian-green) !important; */
-  box-shadow: 0 20px 44px rgba(0, 212, 180, 0.18) !important;
+  /* box-shadow: 0 20px 44px rgba(0, 212, 180, 0.18) !important; */
   z-index: 15;
 }
 

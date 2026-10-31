@@ -6063,15 +6063,33 @@
 
 /* نوار رنگی بالای کارت‌ها */
 .s16-card-green {
-  border-top: 4px solid var(--persian-green);
+  border-top: 4px solid var(--persian-green) !important;
+}
+
+.s16-card-green:hover {
+  border-top: 5px solid var(--persian-green) !important;
+  border-color: var(--persian-green) !important;
+  box-shadow: 0 20px 48px rgba(0, 212, 180, 0.35) !important;
 }
 
 .s16-card-orange {
-  border-top: 4px solid var(--persian-orange);
+  border-top: 4px solid var(--persian-orange) !important;
+}
+
+.s16-card-orange:hover {
+  border-top: 5px solid var(--persian-orange) !important;
+  border-color: var(--persian-orange) !important;
+  box-shadow: 0 20px 48px rgba(255, 119, 34, 0.35) !important;
 }
 
 .s16-card-sky {
-  border-top: 4px solid var(--sky-blue);
+  border-top: 4px solid var(--sky-blue) !important;
+}
+
+.s16-card-sky:hover {
+  border-top: 5px solid var(--sky-blue) !important;
+  border-color: var(--sky-blue) !important;
+  box-shadow: 0 20px 48px  rgba(0, 147, 221, 0.35) !important;
 }
 
 .s16-card:hover {
@@ -6126,7 +6144,7 @@
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 10px;
   font-size: clamp(11px, 0.85vw, 12.5px);
-  font-weight: 700;
+  font-weight: 400;
   color: #ffffff;
   white-space: nowrap;
   transition:
@@ -6163,6 +6181,40 @@
   font-size: clamp(10px, 0.75vw, 11px);
   font-weight: 900;
   flex-shrink: 0;
+}
+
+.s16-card .s16-card-text,
+.s16-card .s16-brands-row {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  transform: translateY(-6px);
+  transition:
+    max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    margin 0.35s ease !important;
+}
+
+/* نمایش متن و برندها به هنگام هاور شدن روی کارت رفاهی */
+.s16-card:hover .s16-card-text,
+.s16-card:focus-within .s16-card-text {
+  max-height: 200px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 8px !important;
+  transform: translateY(0);
+}
+
+.s16-card:hover .s16-brands-row,
+.s16-card:focus-within .s16-brands-row {
+  max-height: 250px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 10px !important;
+  transform: translateY(0);
 }
 
 /* =========================================================================
@@ -6426,7 +6478,7 @@
   height: 420px;
   perspective: 1200px;
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   width: 100%;
 }
@@ -6436,7 +6488,7 @@
   display: grid;
   grid-template-columns: 1.05fr 0.95fr;
   gap: 28px;
-  align-items: center;
+  align-items: start;
 }
 
 /* ستون کارت‌های تخصیص */
@@ -6452,6 +6504,37 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+  width: 100%;
+}
+
+.s17-alloc-green {
+  border-right: 5px solid var(--persian-green) !important;
+}
+
+.s17-alloc-green:hover {
+  border-right: 5px solid var(--persian-green) !important;
+  border-color: var(--persian-green) !important;
+  box-shadow: 0 20px 48px rgba(0, 212, 180, 0.35) !important;
+}
+
+.s17-alloc-orange {
+  border-right: 5px solid var(--persian-orange) !important;
+}
+
+.s17-alloc-orange:hover {
+  border-right: 5px solid var(--persian-orange) !important;
+  border-color: var(--persian-orange) !important;
+  box-shadow: 0 20px 48px  rgba(255, 119, 34, 0.35) !important;
+}
+
+.s17-alloc-sky {
+  border-right: 5px solid var(--sky-blue) !important;
+}
+
+.s17-alloc-sky:hover {
+  border-right: 5px solid var(--sky-blue) !important;
+  border-color: var(--sky-blue) !important;
+  box-shadow: 0 20px 48px rgba(0, 147, 221, 0.35) !important;
 }
 
 /* سر کارت (شماره + عنوان) */
@@ -6478,6 +6561,7 @@
   background: var(--persian-green-soft);
   color: var(--persian-green);
 }
+
 
 .s17-num-orange {
   background: var(--persian-orange-soft);
@@ -6526,8 +6610,31 @@
   font-size: 15px !important;
   font-weight: 900;
   border-top: 1px dashed rgba(255, 255, 255, 0.1);
-  padding-top: 6px;
+  padding-top: 10px;
   margin-top: 0;
+}
+
+.s17-alloc-card .s17-alloc-foot {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  transform: translateY(-6px);
+  transition:
+    max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    margin 0.35s ease !important;
+}
+
+/* نمایش متن و برندها به هنگام هاور شدن روی کارت رفاهی */
+.s17-alloc-card:hover .s17-alloc-foot,
+.s17-alloc-card:focus-within .s17-alloc-foot {
+  max-height: 200px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 8px !important;
+  transform: translateY(0);
 }
 
 .s17-foot-green {
@@ -6747,20 +6854,30 @@
   transition:
     border-color 0.3s ease,
     box-shadow 0.3s ease;
-}
+  }
 
 .s18-pay-card:hover {
   transform: none !important;
 }
 
+.s18-card-green {
+   border-right: 5px solid var(--persian-green) !important;
+}
+
 .s18-card-green:hover {
-  border-color: var(--persian-green);
-  box-shadow: 0 20px 44px rgba(0, 212, 180, 0.16);
+  border-right: 5px solid var(--persian-green) !important;
+  border-color: var(--persian-green) !important;
+  box-shadow: 0 20px 44px rgba(0, 212, 180, 0.35) !important;
+}
+
+.s18-card-orange {
+   border-right: 5px solid var(--persian-orange) !important;
 }
 
 .s18-card-orange:hover {
-  border-color: var(--persian-orange);
-  box-shadow: 0 20px 44px rgba(255, 119, 34, 0.16);
+  border-right: 5px solid var(--persian-orange) !important;
+  border-color: var(--persian-orange) !important;
+  box-shadow: 0 20px 44px rgba(255, 119, 34, 0.35) !important;
 }
 
 /* سر کارت */
@@ -7104,26 +7221,29 @@
 
 /* نوار رنگی بالای کارت */
 .s19-card-sky {
-  border-top: 4px solid var(--sky-blue);
+  border-top: 4px solid var(--sky-blue) !important;
 }
 .s19-card-orange {
-  border-top: 4px solid var(--persian-orange);
+  border-top: 4px solid var(--persian-orange) !important;
 }
 .s19-card-green {
-  border-top: 4px solid var(--persian-green);
+  border-top: 4px solid var(--persian-green) !important;
 }
 
 .s19-card-sky:hover {
-  border-color: var(--sky-blue);
-  box-shadow: 0 20px 44px rgba(0, 147, 221, 0.16);
+  border-top: 4px solid var(--sky-blue) !important;
+  border-color: var(--sky-blue) !important;
+  box-shadow: 0 20px 44px rgba(0, 147, 221, 0.35) !important;
 }
 .s19-card-orange:hover {
-  border-color: var(--persian-orange);
-  box-shadow: 0 20px 44px rgba(255, 119, 34, 0.16);
+  border-top: 4px solid var(--persian-orange) !important;
+  border-color: var(--persian-orange) !important;
+  box-shadow: 0 20px 44px rgba(255, 119, 34, 0.35) !important;
 }
 .s19-card-green:hover {
-  border-color: var(--persian-green);
-  box-shadow: 0 20px 44px rgba(0, 212, 180, 0.16);
+  border-top: 4px solid var(--persian-green) !important;
+  border-color: var(--persian-green) !important;
+  box-shadow: 0 20px 44px rgba(0, 212, 180, 0.35) !important;
 }
 
 /* badge داخل کارت */
@@ -7187,9 +7307,24 @@
 
 .s19-val-section-green {
   background: rgba(0, 212, 180, 0.08);
+  border: 1px solid var(--persian-green-soft);
 }
+
+.s19-val-section-green:hover {
+  background: rgba(0, 212, 180, 0.08);
+  border-color: var(--persian-green);
+  box-shadow: 0 8px 24px rgba(0, 212, 180, 0.15);
+}
+
 .s19-val-section-orange {
   background: rgba(255, 119, 34, 0.08);
+  border: 1px solid var(--persian-orange-soft);
+}
+
+.s19-val-section-orange:hover {
+  background: rgba(255, 119, 34, 0.08);
+  border-color: var(--persian-orange);
+  box-shadow: 0 8px 24px rgba(255, 119, 34, 0.15);
 }
 
 .s19-val-title {
@@ -7218,10 +7353,14 @@
     rgba(0, 212, 180, 0.09) 0%,
     rgba(17, 24, 31, 0.95) 100%
   );
-  margin-top: 16px;
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
+}
+
+.s19-ux-card:hover {
+  border-color: var(--persian-green) !important;
 }
 
 .s19-ux-title {
@@ -7319,6 +7458,14 @@
   font-size: 11px;
 }
 
+.s19-list-sky li::before {
+  color: var(--sky-blue);
+}
+
+.s19-list-orange li::before {
+  color: var(--persian-orange);
+}
+
 .s19-list li strong {
   color: #ffffff;
   font-weight: 900;
@@ -7351,9 +7498,6 @@
   border-radius: 12px;
 }
 
-.s19-val-section-green {
-  background: rgba(0, 212, 180, 0.08);
-}
 
 .s19-val-section-orange {
   background: rgba(255, 119, 34, 0.08);
@@ -7371,8 +7515,8 @@
   grid-template-columns: 1fr 1fr;
   gap: 6px 10px;
   font-size: clamp(10.5px, 0.8vw, 12px);
-  color: var(--text-muted);
-  font-weight: 700;
+  color: #ffffff;
+  font-weight: 500;
   line-height: 1.5;
 }
 
@@ -7697,6 +7841,7 @@
     border-color 0.3s ease,
     box-shadow 0.3s ease;
   height: 100%;
+  width: 100%;
 }
 
 .s20-stat-card:hover {
@@ -7743,6 +7888,29 @@
   transform: none !important;
   overflow: visible !important;
   display: block !important;
+}
+
+.s20-stat-card .s20-stat-text {
+  max-height: 0 !important;
+  opacity: 0 !important;
+  overflow: hidden !important;
+  margin: 0 !important;
+  transform: translateY(-6px);
+  transition:
+    max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+    opacity 0.35s ease,
+    transform 0.35s ease,
+    margin 0.35s ease !important;
+}
+
+/* نمایش متن و برندها به هنگام هاور شدن روی کارت رفاهی */
+.s20-stat-card:hover .s20-stat-text,
+.s20-stat-card:focus-within .s20-stat-text {
+  max-height: 200px !important;
+  opacity: 1 !important;
+  overflow: visible !important;
+  margin-top: 8px !important;
+  transform: translateY(0);
 }
 
 .s20-stat-text strong {
