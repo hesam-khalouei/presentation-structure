@@ -18,23 +18,25 @@
   min-width: 0;
 }
 
-.imap {
-  margin-bottom: 0;
-}
-
-/* استایل‌دهی به div خالی (جایگزین کلاس imap-map) */
-.imap > div {
+/* کلاس‌های مربوط به نقشه (برای کدهایی که خودتان اضافه می‌کنید) */
+.imap-map,
+.s20-imap-map {
   background: rgba(17, 24, 31, 0.85);
   border: 1px solid var(--border-green);
   border-radius: 22px;
-  padding: 16px 18px;
+  padding: 14px 18px;
   position: relative;
   box-shadow: 0 16px 38px rgba(0, 0, 0, 0.35);
 }
 
-.imap-svg {
+.s20-imap-map {
+  padding: 16px 18px !important;
+}
+
+.imap-svg,
+.s20-imap-svg {
   width: 100%;
-  max-width: 470px;
+  max-width: 100%;
   max-height: 460px;
   height: auto;
   display: block;
@@ -78,7 +80,6 @@
   stroke-width: 2.2;
 }
 
-/* تولتیپ ساده */
 .imap-tip {
   position: absolute;
   z-index: 30;
@@ -100,14 +101,12 @@
 .imap-tip.show {
   opacity: 1;
 }
-
 .imap-tip small {
   color: var(--persian-green);
   font-weight: 800;
   margin-right: 8px;
 }
 
-/* راهنمای نقشه (Legend) */
 .imap-legend {
   display: flex;
   flex-wrap: wrap;
@@ -145,7 +144,6 @@
   background: #334155;
 }
 
-/* تولتیپ پیشرفته */
 .imap-tip-rich {
   position: absolute;
   z-index: 50;
@@ -184,13 +182,11 @@
   font-weight: 900;
   color: #ffffff;
 }
-
 .tip-city-name {
   font-size: 11.5px;
   font-weight: 700;
   color: var(--persian-green);
 }
-
 .tip-merch-row {
   display: flex;
   align-items: center;
@@ -199,7 +195,6 @@
   font-weight: 800;
   color: #cbd5e1;
 }
-
 .tip-merch-num {
   color: var(--persian-green);
   font-size: 15px;
@@ -230,6 +225,9 @@
     box-shadow 0.3s ease;
   height: 100%;
   width: 100%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-glass);
+  border-radius: 16px;
 }
 
 .s20-stat-card:hover {
@@ -237,23 +235,39 @@
   z-index: 10;
 }
 
+.s20-stat-card.border-right-green {
+  border-right-color: var(--persian-green) !important;
+}
 .s20-stat-card.border-right-green:hover {
   border-color: var(--persian-green);
   box-shadow: 0 14px 32px rgba(0, 212, 180, 0.14);
+}
+
+.s20-stat-card.border-right-sky {
+  border-right-color: var(--sky-blue) !important;
 }
 .s20-stat-card.border-right-sky:hover {
   border-color: var(--sky-blue);
   box-shadow: 0 14px 32px rgba(0, 147, 221, 0.14);
 }
+
+.s20-stat-card.border-right-orange {
+  border-right-color: var(--persian-orange) !important;
+}
 .s20-stat-card.border-right-orange:hover {
   border-color: var(--persian-orange);
   box-shadow: 0 14px 32px rgba(255, 119, 34, 0.14);
+}
+
+.s20-stat-card.border-right-purple {
+  border-right-color: #a78bfa !important;
 }
 .s20-stat-card.border-right-purple:hover {
   border-color: #a78bfa;
   box-shadow: 0 14px 32px rgba(167, 139, 250, 0.14);
 }
 
+/* عنوان کارت آمار */
 .s20-stat-title {
   font-size: clamp(14px, 1.15vw, 17px);
   font-weight: 900;
@@ -271,6 +285,7 @@
   opacity: 0 !important;
   overflow: hidden !important;
   margin: 0 !important;
+  padding: 0 !important;
   transform: translateY(-6px);
   transition:
     max-height 0.45s cubic-bezier(0.16, 1, 0.3, 1),
@@ -294,15 +309,13 @@
   font-weight: 900;
 }
 
-/* =========================================================================
-   MARQUEE LOGOS
-   ========================================================================= */
+/* Marquee پایین */
 .s20-marquee {
   margin-top: 16px;
 }
 
-.logo-dots {
-  --dot: 62px;
+.s20-marquee .logo-dots {
+  --dot: clamp(48px, 5vw, 62px);
   --gap: 12px;
   display: flex;
   flex-wrap: wrap;
@@ -330,37 +343,6 @@
     #000 93%,
     transparent
   );
-}
-
-.s20-marquee .logo-dots {
-  --dot: clamp(48px, 5vw, 62px);
-  --gap: 12px;
-}
-
-.logo-dot {
-  width: var(--dot);
-  height: var(--dot);
-  border-radius: 50%;
-  background: #ffffff !important;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.logo-dot:hover {
-  transform: translateY(-4px) scale(1.12);
-  box-shadow: 0 10px 24px rgba(0, 212, 180, 0.4);
-}
-
-.logo-dot img {
-  max-width: 76%;
-  max-height: 56%;
-  object-fit: contain;
-  display: block;
 }
 
 .lm-track {
@@ -421,8 +403,8 @@
 }
 
 @media (max-width: 768px) {
-  .imap > div {
-    padding: 12px 14px;
+  .s20-imap-map {
+    padding: 12px 14px !important;
   }
   .s20-imap-svg {
     max-height: 380px;
@@ -448,9 +430,9 @@
 }
 
 @media (max-width: 480px) {
-  .imap > div {
-    padding: 10px 10px;
-    border-radius: 16px;
+  .s20-imap-map {
+    padding: 10px 10px !important;
+    border-radius: 16px !important;
   }
   .s20-imap-svg {
     max-height: 320px;
@@ -461,6 +443,7 @@
     gap: 6px 8px;
     font-size: 10px;
   }
+
   .s20-stat-card {
     padding: 12px 14px;
     border-right-width: 4px !important;
@@ -474,6 +457,7 @@
     font-size: 11.5px;
     line-height: 1.6;
   }
+
   .s20-marquee {
     margin-top: 12px;
   }
